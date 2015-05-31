@@ -4,8 +4,8 @@ var sinclick = require('./sinclick');
 var handleNodeHover = require('./handle-node-hover');
 
 var offNode = function offNode(node) {
-  if (window.d3Node) {
-    window.d3Node
+  if (window.node) {
+    window.node
       .style("stroke", "white")
       .on('mouseover',handleNodeHover)
       .on('mouseout', offNode)

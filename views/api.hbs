@@ -1,0 +1,44 @@
+{{> sidenav}}
+
+<div class="grid mainbody">
+  <div class="row about-text">
+    <header>
+      <h2 class="span8 offset2">API</h2>
+    </header>
+
+    <div class="span8 offset2">
+      Use Civic Graph database to build your own project or to integrate with an existing project.
+    </div>
+
+    <h3 style="margin-top:10px;" class="span8 offset2">Python 3.0</h3>
+
+    <code class="span8 offset2">
+      <pre>
+
+import json
+from urllib.request import urlopen url = "https://civicinsight.azurewebsites.net/athena"
+response = urlopen(url)
+contents = response.read()
+text = contents.decode('utf8')
+data = json.loads(text)
+print(json.dumps(data, indent=4))
+      </pre>
+    </code>
+
+    <h3 style="margin-top:10px;" class="span8 offset2">Python 2.7.8</h3>
+
+    <code class="span8 offset2">
+      <pre>
+
+import json import urllib url = "https://civicinsight.azurewebsites.net/athena"
+response = urllib.urlopen(url)
+contents = response.read()
+text = contents.decode('utf8')
+data = json.loads(text)
+print(json.dumps(data, indent=4))
+      </pre>
+    </code>
+  </div>
+</div>
+
+{{> footer}}

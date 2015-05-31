@@ -4,12 +4,6 @@ var $     = require('jquery');
 
 var utils = require('./utilities');
 
-// var fs = require('fs');
-// require('d3-geo-projection');
-require('topojson');
-require('queue-async');
-require('d3-tip');
-
 require('./styles/reset.css');
 require('./styles/normalize.css');
 require('./styles/metro-bootstrap.css');
@@ -22,15 +16,6 @@ require('./styles/checkboxes.css');
 require('./styles/footer.css');
 require('./styles/left-nav.css');
 require('./styles/developer-style.css');
-
-// TEMP
-// var formATmpl = require('jade!./templates/form-a.jade');
-// var formBTmpl = require('jade!./templates/form-b.jade');
-// var formCTmpl = require('jade!./templates/form-c.jade');
-
-// $('.example').html(formATmpl());
-
-// TEMP
 
 d3.selection.prototype.moveToFront = function() {
   console.log("Running moveToFront");
@@ -49,61 +34,63 @@ d3.selection.prototype.moveToBack = function() {
   });
 };
 
-d3.selectAll('#cb_networkview').on('click', function() {
-  console.log("Running cb_networkview click handler");
+// d3.selectAll('#cb_networkview').on('click', function() {
+//   console.log("Running cb_networkview click handler");
 
-  if (document.getElementById('cb_networkview').checked) {
-    var map = document.getElementById('map');
+//   if (document.getElementById('cb_networkview').checked) {
+//     var map = document.getElementById('map');
 
-    if (map) {
-      map.parentNode.removeChild(map);
-    }
+//     if (map) {
+//       map.parentNode.removeChild(map);
+//     }
 
-    drawGraph();
-  }
-});
+//     drawGraph();
+//   }
+// });
 
-d3.selectAll('#cb_mapview').on('click', function() {
-  console.log("Running cb_mapview click handler");
+// d3.selectAll('#cb_mapview').on('click', function() {
+//   console.log("Running cb_mapview click handler");
 
-  if (document.getElementById('cb_mapview').checked) {
-    var network = document.getElementById('network');
+//   if (document.getElementById('cb_mapview').checked) {
+//     var network = document.getElementById('network');
 
-    if (network) {
-      network.parentNode.removeChild(network);
-    }
+//     if (network) {
+//       network.parentNode.removeChild(network);
+//     }
 
-    drawMap();
-  }
-});
+//     drawMap();
+//   }
+// });
 
-// var drawEntityGraph = require('./d4/draw-entity-graph');
-var drawGraph = require('./d3/draw-graph');
-var drawMap = require('./d3/draw-map');
+var drawEntityGraph = require('./d4/draw-entity-graph');
+// var drawGraph = require('./d3/draw-graph');
+// var drawMap = require('./d3/draw-map');
 var loadD3Layer = require('./d3/load-d3-layer');
 
-var currentView = utils.getQueryParams()['view'];
 
-// TODO: set checkboxes on document ready
-var mapView     = document.getElementById('cb_mapview');
-var networkView = document.getElementById('cb_networkview');
+drawEntityGraph();
+// var currentView = utils.getQueryParams()['view'];
 
-if (currentView == 'map') {
-  console.log("currentView == map; calling drawMap");
+// // TODO: set checkboxes on document ready
+// var mapView     = document.getElementById('cb_mapview');
+// var networkView = document.getElementById('cb_networkview');
 
-  drawMap();
+// if (currentView == 'map') {
+//   console.log("currentView == map; calling drawMap");
 
-  if (mapView && networkView) {
-    mapView.checked = true;
-    networkView.checked = false;
-  }
-} else {
-  console.log("currentView == network; calling drawGraph");
+//   drawMap();
 
-  drawGraph();
+//   if (mapView && networkView) {
+//     mapView.checked = true;
+//     networkView.checked = false;
+//   }
+// } else {
+//   console.log("currentView == network; calling drawGraph");
 
-  if (mapView && networkView) {
-    mapView.checked = false;
-    networkView.checked = true;
-  }
-}
+//   drawGraph();
+
+//   if (mapView && networkView) {
+//     mapView.checked = false;
+//     networkView.checked = true;
+//   }
+// }

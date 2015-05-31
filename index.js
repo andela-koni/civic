@@ -4,6 +4,8 @@ var cookieParser = require('cookie-parser');
 var favicon      = require('serve-favicon');
 var logger       = require('morgan');
 var path         = require('path');
+var hbs          = require('express-handlebars');
+var numeral      = require('numeral');
 var _            = require('lodash');
 
 var data         = require('./data');
@@ -11,7 +13,15 @@ var data         = require('./data');
 var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// app.set('view engine', 'jade');
+app.engine('.hbs', hbs({
+  defaultLayout: 'main',
+  extname: '.hbs',
+  helpers: {
+    num: function (n) { return numeral(n).format('0,0'); }
+  }
+}));
+app.set('view engine', '.hbs');
 
 app.use(favicon(__dirname + '/public/microsoft.ico'));
 app.use(logger('dev'));

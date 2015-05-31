@@ -53,7 +53,7 @@ var tick = function (event) {
       .attr("x2", function(d) { return d.target.x; })
       .attr("y2", function(d) { return d.target.y; });
 
-    window.d3Node
+    window.node
       .attr("cx", function(d) { return d.x = d.x; })
       .attr("cy", function(d) { return d.y = d.y; });
 
@@ -180,11 +180,11 @@ var tick = function (event) {
         }
       );
 
-    window.d3Node
+    window.node
       .attr(
         "cx",
         function(d, i) {
-          if ((d3.select(window.d3Node)[0][0].data())[i].name === window.centeredNode.name) {
+          if ((d3.select(window.node)[0][0].data())[i].name === window.centeredNode.name) {
             d.x = window.centeredNode.x;
           }
           return d.x;
@@ -193,7 +193,7 @@ var tick = function (event) {
       .attr(
         "cy",
         function(d, i) {
-          if ((d3.select(window.d3Node)[0][0].data())[i].name === window.centeredNode.name) {
+          if ((d3.select(window.node)[0][0].data())[i].name === window.centeredNode.name) {
             d.y = window.centeredNode.y;
           }
           return d.y;

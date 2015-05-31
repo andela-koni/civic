@@ -121,8 +121,46 @@ var processEdges = function(edges, withData) {
   })
 };
 
+var getAllEntities = function(callback) {
+  var entities, bridges, operations;
+
+  var qry = select().from("entities_view").where({render: 1}).toString();
+
+  db.query(qry)
+    .then(function(results) {
+      entities = _.map(results, function(row) {
+        row.loaded = true;
+        return row;
+      });
+
+      qry = select().from("bridges_view").where({render: 1}).toString()
+
+      return db.query(qry)
+    })
+    .then(function(results) {
+      bridges = results;
+      qry = select().from("operations_view").toString()
+
+      return db.query(qry)
+    })
+    .then(function(results) {
+      operations = results;
+      qry = select().from("locations_with_city").toString()
+
+      return db.query(qry)
+    })
+    .then(function(results) {
+      callback(null, {
+        vertices: _.values(processVertices(entities, bridges, operations, results))
+      });
+    })
+    .catch(function(err) {
+      callback(err, null);
+    });
+};
+
 var getTopEntities = function(callback) {
-  var entities, bridges;
+  var entities, bridges, operations;
 
   var qry = "SELECT DISTINCT * FROM (" +
     "SELECT e.* FROM (" +
@@ -168,6 +206,8 @@ var getTopEntities = function(callback) {
 };
 
 var getOtherEntities = function(idsToAvoid, callback) {
+  var entities, bridges, operations;
+
   var qry = "SELECT id, name, nickname, followers, employees, entity_type " +
     "FROM entities_view " +
     "WHERE id NOT IN (" + idsToAvoid.join(",") + ")";
@@ -441,7 +481,7 @@ var getLocationsWithCities = function(callback) {
 };
 
 var getStore = function(callback) {
-  getVertices(function(err, vertices) {
+  getAllEntities(function(err, vertices) {
     var entityHash = {};
     var ids = [];
     // var search = {};
@@ -498,6 +538,7 @@ var getStore = function(callback) {
 exports.processVertices   = processVertices;
 exports.processEdges      = processEdges;
 exports.getAllEdges       = getAllEdges;
+exports.getAllEntities    = getAllEntities;
 exports.getEdges          = getEdges;
 exports.getLocations      = getLocations;
 exports.getOtherEntities  = getOtherEntities;

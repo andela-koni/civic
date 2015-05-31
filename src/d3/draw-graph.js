@@ -95,7 +95,7 @@ var drawGraph = function () {
     .linkStrength(0)
     .charge(function(target) {
       if (target.render === 1) {
-        console.log("target", target);
+        console.log("target", target.employees);
         if (target.employees !== null) {
           return -6 * u.employeeScale(target.employees);
         } else {
@@ -211,7 +211,7 @@ var drawGraph = function () {
     .style('color', '#FFFFFF')
     .style('pointer-events', 'none');
 
-  window.d3Node = window.nodeInit
+  window.node = window.nodeInit
     .append("circle")
     .attr("r",
       function(d) {
@@ -402,7 +402,7 @@ var drawGraph = function () {
     'click',
     function() {
       if (document.getElementById("cb_emp").checked) {
-        window.d3Node
+        window.node
           .transition()
           .duration(350)
           .delay(0)
@@ -431,7 +431,7 @@ var drawGraph = function () {
       }
 
       if (document.getElementById("cb_numtwit").checked) {
-        window.d3Node
+        window.node
           .transition()
           .duration(350)
           .delay(0)

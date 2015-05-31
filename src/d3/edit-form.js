@@ -24,7 +24,7 @@ var editForm = function() {
     .html('<i class=" icon-file on-left"></i>Reset Form')
     .on('click', editForm);
 
-  window.d3Node.on('mouseover', null);
+  window.node.on('mouseover', null);
 
   // Render the string into HTML
   d3.select('#info').html(formATmpl());

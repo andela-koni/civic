@@ -12,7 +12,7 @@ var dragEnd = function (target) {
       function(target) { target.fixed = true; }
     );
 
-  window.d3Node
+  window.node
     .on('mouseover', handleNodeHover)
     .on('mouseout', offNode)
     .on('click', sinclick);

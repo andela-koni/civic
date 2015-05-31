@@ -100,6 +100,83 @@ body {
   /*padding-right:20px;
 }*/
 
+.form-header {
+  font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  line-height: 2.2rem;
+  margin: 0 0 10px 0;
+  margin-top: 10px !important;
+  padding: 0;
+}
+
+.webform-labels {
+  color: hsl(0, 0%, 0%) !important;
+  display: inline-block !important;
+  font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif !important;
+  font-size: 14px !important;
+  font-weight: normal !important;
+  letter-spacing: 0.02em;
+  line-height: 1.6rem;
+  margin: 0 0 10px 0;
+  margin-left: 20pt !important;
+  padding: 0;
+}
+
+.select-all-msg {
+  color: hsl(0, 0%, 0%);
+  font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px !important;
+  font-weight: bold;
+  letter-spacing: 0.02em;
+  line-height: 1.6rem;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.metro .main-nav .checkbox-label,
+.metro .main-nav .radio-label {
+  font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: hsl(0, 0%, 0%);
+  font-weight: normal;
+  display: inline-block;
+  margin-left: 20pt;
+  line-height: 1.6rem;
+  letter-spacing: 0.02em;
+}
+
+header {
+  margin: 20px 0;
+}
+
+ul.sidenav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.sidenav li {
+  margin: 40px 0 10px;
+  font-family: 'Segoe UI_', 'Open Sans', Verdana, Arial, Helvetica, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  padding-left: 20px;
+}
+
+.sidenav a {
+  font-size: 20px;
+  color: hsl(0, 0%, 0%);
+  font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
+  letter-spacing: 0.01em;
+  line-height: 2.2rem;
+  font-weight: bold;
+  padding: 0;
+  margin: 0 0 10px 0;
+  text-decoration: none;
+}
+
 .current-view,
 .types,
 .connections,
@@ -608,11 +685,11 @@ button#submit-B {
 
 .routes.funding_connections {
   stroke: #6f5da8;
-} 
+}
 
 .routes.investment_connections {
   stroke: #267272;
-} 
+}
 
 .routes.collaboration_connections {
   stroke: #ebe826;

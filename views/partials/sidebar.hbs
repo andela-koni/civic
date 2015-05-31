@@ -1,0 +1,119 @@
+<nav id="main-nav" class="main-nav">
+  <div id="athena-left-nav">
+    <div class="filter-name-location input-control text">
+      <input id="search-text" type="text" placeholder="Filter by name or location" list="data-name-location" />
+    </div>
+    <div class="group-items types">
+      <h3 class="typestext">Types</h3>
+
+      <div data-role="input-control" class="input-control checkbox">
+        <label for="for-profits-cbox">
+          <input id="for-profits-cbox" type="checkbox" name="for_profit"
+            data-show="for-profit" value="For-Profit" checked="checked" />
+          <span class="check"></span>
+          <span class="checkbox-label">For-Profit</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label for="non-profits-cbox">
+          <input id="non-profits-cbox" type="checkbox" name="non_profit"
+            data-show="non-profit" value="Non-Profit" checked="checked" />
+          <span class="check"></span>
+          <span class="checkbox-label">Non-Profit</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label for="governments-cbox">
+          <input id="governments-cbox" type="checkbox" name="government"
+            data-show="government" value="Government" checked="checked" />
+          <span class="check"></span>
+          <span class="checkbox-label">Government</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label for="individuals-cbox">
+          <input id="individuals-cbox" type="checkbox" name="individual"
+            data-show="individual" value="Individual" checked="checked">
+          <span class="check"></span>
+          <span class="checkbox-label">Individual</span>
+        </label>
+      </div>
+    </div>
+    <div class="group-items connections">
+      <h3 class="connectionstext">Connections</h3>
+
+      <div data-role="input-control" class="input-control checkbox">
+        <label>
+          <input id="cb_invest" type="checkbox" name="invest"
+            data-show="investing" value="Investing" checked="checked">
+          <span class="check"></span>
+          <span class="checkbox-label">Investing</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label>
+          <input id="cb_fund" type="checkbox" name="fund"
+            data-show="funding" value="Funding" checked="checked">
+          <span class="check"></span>
+          <span class="checkbox-label">Funding</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label>
+          <input id="cb_collaboration" type="checkbox" name="poruc"
+            data-show="poruc" value="Poruc" checked="checked">
+          <span class="check"></span>
+          <span class="checkbox-label">Collaboration</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control checkbox">
+        <label>
+          <input id="cb_data" type="checkbox" name="data"
+            data-show="data" value="Data" checked="checked">
+          <span class="check"></span>
+          <span class="checkbox-label">Data</span>
+        </label>
+      </div>
+    </div>
+    <div class="group-items relevance">
+      <h3 class="sized_bytext">Sized By</h3>
+
+      <div data-role="input-control" class="input-control radio default-style sizeby">
+        <label>
+          <input id="cb_emp" type="radio" name="relevance"
+            value="Employees" checked="checked">
+          <span class="check"></span>
+          <span class="radio-label">Employees</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control radio default-style sizeby">
+        <label>
+          <input id="cb_numtwit" type="radio" name="relevance"
+            value="Followers">
+          <span class="check"></span>
+          <span class="radio-label">Twitter Followers</span>
+        </label>
+      </div>
+    </div>
+    <div class="group-items current-view">
+      <h3 class="viewstext">View</h3>
+
+      <div data-role="input-control" class="input-control radio default-style views">
+        <label>
+          <input id="cb_networkview" type="radio" name="views"
+            value="Network Diagram" checked="checked">
+          <span class="check"></span>
+          <span class="radio-label">Network</span>
+        </label>
+      </div>
+      <div data-role="input-control" class="input-control radio default-style views">
+        <label>
+          <input id="cb_mapview" type="radio" name="views"
+            value="Map">
+          <span class="check"></span>
+          <span class="radio-label">Map</span>
+        </label>
+      </div>
+    </div>
+  </div>
+</nav>

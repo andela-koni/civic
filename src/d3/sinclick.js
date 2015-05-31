@@ -5,7 +5,7 @@ var handleClickNodeHover = require('./handle-click-node-hover');
 var sinclick = function (node) {
   var clearResetFlag = 0;
 
-  handleClickNodeHover(window.d3Node);
+  handleClickNodeHover(window.node);
 
   window.civicStore.lines.funding
     .transition()
@@ -14,7 +14,7 @@ var sinclick = function (node) {
     .style(
       "opacity",
       function(link) {
-        if (window.d3Node === link.source || window.d3Node === link.target) {
+        if (window.node === link.source || window.node === link.target) {
           return "1";
         } else {
           return "0.05";
@@ -29,7 +29,7 @@ var sinclick = function (node) {
     .style(
       "opacity",
       function(link) {
-        if (window.d3Node === link.source || window.d3Node === link.target) {
+        if (window.node === link.source || window.node === link.target) {
           return "1";
         } else {
           return "0.05";
@@ -44,7 +44,7 @@ var sinclick = function (node) {
     .style(
       "opacity",
       function(link) {
-        if (window.d3Node === link.source || window.d3Node === link.target) {
+        if (window.node === link.source || window.node === link.target) {
           return "1";
         } else {
           return "0.05";
@@ -59,7 +59,7 @@ var sinclick = function (node) {
     .style(
       "opacity",
       function(link) {
-        if (window.d3Node === link.source || window.d3Node === link.target) {
+        if (window.node === link.source || window.node === link.target) {
           return "1";
         } else {
           return "0.05";
@@ -67,11 +67,11 @@ var sinclick = function (node) {
       }
     );
 
-  window.d3Node
+  window.node
     .style(
       "stroke",
       function(singleNode) {
-        if (singleNode !== window.d3Node) {
+        if (singleNode !== window.node) {
           return "white";
         } else {
           return "black";
@@ -79,10 +79,10 @@ var sinclick = function (node) {
       }
     ).on('mouseout', null);
 
-  window.d3Node
+  window.node
     .filter(
       function(singleNode) {
-        if (singleNode !== window.d3Node) { return singleNode; }
+        if (singleNode !== window.node) { return singleNode; }
       }
     )
     .on('mouseover', null);
@@ -90,13 +90,13 @@ var sinclick = function (node) {
   var neighborFund = window.civicStore.edges.funding
     .filter(
       function(link) {
-        return link.source.index === window.d3Node.index ||
-          link.target.index === window.d3Node.index;
+        return link.source.index === window.node.index ||
+          link.target.index === window.node.index;
       }
     )
     .map(
       function(link) {
-        return link.source.index === window.d3Node.index ?
+        return link.source.index === window.node.index ?
           link.target.index :
           link.source.index;
       }
@@ -105,13 +105,13 @@ var sinclick = function (node) {
   var neighborInvest = window.civicStore.edges.investment
     .filter(
       function(link) {
-        return link.source.index === window.d3Node.index ||
-          link.target.index === window.d3Node.index;
+        return link.source.index === window.node.index ||
+          link.target.index === window.node.index;
       }
     )
     .map(
       function(link) {
-        return link.source.index === window.d3Node.index ?
+        return link.source.index === window.node.index ?
         link.target.index :
         link.source.index;
       }
@@ -120,13 +120,13 @@ var sinclick = function (node) {
   var neighborPorucs = window.civicStore.edges.collaboration
     .filter(
       function(link) {
-        return link.source.index === window.d3Node.index ||
-        link.target.index === window.d3Node.index;
+        return link.source.index === window.node.index ||
+        link.target.index === window.node.index;
       }
     )
     .map(
       function(link) {
-        return link.source.index === window.d3Node.index ?
+        return link.source.index === window.node.index ?
         link.target.index :
         link.source.index;
       }
@@ -135,13 +135,13 @@ var sinclick = function (node) {
   var neighborData = window.civicStore.edges.data
     .filter(
       function(link) {
-        return link.source.index === window.d3Node.index ||
-        link.target.index === window.d3Node.index;
+        return link.source.index === window.node.index ||
+        link.target.index === window.node.index;
       }
     )
     .map(
       function(link) {
-        return link.source.index === window.d3Node.index ? link.target.index : link.source.index;
+        return link.source.index === window.node.index ? link.target.index : link.source.index;
       }
     );
 
@@ -163,7 +163,7 @@ var sinclick = function (node) {
     ).select('text').style('opacity', 1);
 
 
-  window.d3Node
+  window.node
     .filter(
       function(l) {
         return (

@@ -34,6 +34,7 @@ var handleAdjNodeClick = function (node) {
   });
 
   var isLinkTarget = function(link, node) {
+    console.log("Checking link target index", link.target, link.target.index, node, node.index);
     return link.target.index === node.index;
   }
 

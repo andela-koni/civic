@@ -1,5 +1,3 @@
-extends layout
-
 block content
   //include ./partials/left-nav
   .grid.mainbody
@@ -57,4 +55,3 @@ block content
           | text = contents.decode('utf8')
           | data = json.loads(text)
           | print(json.dumps(data, indent=4))
-  include ./partials/relative-footer
