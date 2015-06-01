@@ -93,17 +93,8 @@ var drawGraph = function () {
     .size([window.width, window.height])
     .links(window.connections)
     .linkStrength(0)
-    .charge(function(target) {
-      if (target.render === 1) {
-        console.log("target", target.employees);
-        if (target.employees !== null) {
-          return -6 * u.employeeScale(target.employees);
-        } else {
-          return -25;
-        }
-      } else {
-        return 0;
-      }
+    .charge(function(d) {
+      return d.employees !== null ? -6 * u.employeeScale(d.employees) : -25;
     })
     .linkDistance(50);
 
@@ -285,27 +276,28 @@ var drawGraph = function () {
   // Select the nodes to choose for highlighting nickname
   // on visualization (TOP 5)
   window.forProfitNodes.each(function(d, i) {
-    if (i >= window.forProfitNodes[0].length - 5) {
-      window.fiveMostConnectedForProfit[d.name] = d.weight;
-    }
+    console.log("The big d!", d);
+    // if (i >= window.forProfitNodes[0].length - 5) {
+    //   window.fiveMostConnectedForProfit[d.name] = d.weight;
+    // }
   });
 
   window.nonProfitNodes.each(function(d, i) {
-    if (i >= window.nonProfitNodes[0].length - 5) {
-      window.fiveMostConnectedNonProfit[d.name] = d.weight;
-    }
+    // if (i >= window.nonProfitNodes[0].length - 5) {
+    //   window.fiveMostConnectedNonProfit[d.name] = d.weight;
+    // }
   });
 
   window.individualNodes.each(function(d, i) {
-    if (i >= window.individualNodes[0].length - 5) {
-      window.fiveMostConnectedIndividuals[d.name] = d.weight;
-    }
+    // if (i >= window.individualNodes[0].length - 5) {
+    //   window.fiveMostConnectedIndividuals[d.name] = d.weight;
+    // }
   });
 
   window.governmentNodes.each(function(d, i) {
-    if (i >= window.governmentNodes[0].length - 5) {
-      window.fiveMostConnectedGovernment[d.name] = d.weight;
-    }
+    // if (i >= window.governmentNodes[0].length - 5) {
+    //   window.fiveMostConnectedGovernment[d.name] = d.weight;
+    // }
   });
 
 

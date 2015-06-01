@@ -179,7 +179,7 @@ var drawEntityGraph = function () {
     .call(drag);
 
     force
-      // .on("tick", tick)
+      .on("tick", tick)
       .start();
 
   /**
