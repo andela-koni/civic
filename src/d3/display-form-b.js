@@ -1,4 +1,5 @@
 var d3 = require('d3');
+var $  = require('jquery');
 
 var processFormA          = require('./process-form-a');
 var preFillName           = require('./pre-fill-name');
@@ -17,10 +18,13 @@ var displayFormB = function() {
   // Now we have a perfectly structured JSON object that contains
   // the information given by the user and inputted into the webform.
   // Send this object as a parameter to form B, and render form B accordingly.
+  console.log("Running displayFormB!");
 
   var formObject = processFormA();
 
-  if (formObject.location && formObject.name) {
+  console.log(formObject);
+
+  if (formObject.locations && formObject.name) {
     var counterKey = 0;
     var counterK = 0;
 
@@ -34,12 +38,12 @@ var displayFormB = function() {
 
     addDataList('#collaboration-0 datalist', utils.getSortedNameOptions());
 
-    if( formObject.location !== null) {
-      var location = formObject.location;
+    if( formObject.locations !== null) {
+      var locations = formObject.locations;
 
-      d3.select('#location-' + formObject.location.length + ' input[name="location"]')
+      d3.select('#location-' + formObject.locations.length + ' input[name="location"]')
         .on('keyup', function() {
-          addInputLoc(formObject.location.length);
+          addInputLoc(formObject.locations.length);
         })
     }
 

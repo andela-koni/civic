@@ -38,6 +38,9 @@ d3.selection.prototype.moveToBack = function() {
   });
 };
 
+civicStore.lookup = {};
+_.each(civicStore.vertices, function (v) { civicStore.lookup[v.name] = v.id; });
+
 d3.selectAll('#cb_networkview').on('click', function() {
   console.log("Running cb_networkview click handler");
 

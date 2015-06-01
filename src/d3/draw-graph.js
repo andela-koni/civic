@@ -372,7 +372,7 @@ var drawGraph = function () {
       handleQuery(this.value);
     });
   } catch (err) {
-    console.log("autocomplete error: ", err);
+    // console.log("autocomplete error: ", err);
   }
 
   d3.selectAll('option').on('keydown',

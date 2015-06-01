@@ -9,6 +9,8 @@ var handleClickNodeHover = function(obj) {
 
   webform = editDisplay(obj);
 
+  console.log("Running handleClickNodeHover with input = ", d3.selectAll('#editCurrentInfo'));
+
   // For editing the data displayed within the side panel.
   d3.
     select('#edit')
@@ -24,12 +26,14 @@ var handleClickNodeHover = function(obj) {
     .selectAll('#editCurrentInfo').on(
       'click',
       function() {
+        console.log("running click handler on #editCurrentInfo");
         prefillCurrent(obj);
       }
     )
     .on(
       'mouseover',
       function() {
+        console.log("running mouseover!");
         d3
           .select(this)
           .style('cursor', 'pointer');

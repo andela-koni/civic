@@ -199,6 +199,7 @@ var preFillFormA = function (obj) {
 
         d3.select('#fundinggiven-' + i + ' input[name="fundgiven"]').text(function(e) {
           this.value = d.entity;
+          console.log("fundgiven", this, this.value, d.entity);
         });
 
         d3.select('#fundinggiven-' + i + ' input[name="fundgiven_amt"]').text(function(e) {

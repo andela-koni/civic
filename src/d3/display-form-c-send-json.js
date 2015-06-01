@@ -4,10 +4,17 @@ var processFormB = require('./process-form-b');
 var displayFormC = require('./display-form-c');
 
 var displayFormCSendJson = function (obj) {
-  // var formObj = processFormB(obj);
+  var formObj = processFormB(obj);
+
+  if (formObj.funding_given) {
+    _.each(formObj.funding_given, function(f, i) {
+      formObj.funding_given[i].id = civicStore.lookup[f.name];
+    })
+  }
 
   displayFormC();
 
+  console.log("formObj after", formObj);
 
   // d3.xhr.post('/entities').data(formObj).on("success", callback);
 

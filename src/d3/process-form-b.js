@@ -1,4 +1,5 @@
 var d3 = require('d3');
+var $  = require('jquery');
 
 var processFormB = function(formObject) {
   // Set the entity name.
