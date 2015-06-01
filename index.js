@@ -31,6 +31,7 @@ app.use('/cities', require('./routes/city'));
 app.use('/entities', require('./routes/entity'));
 app.use('/locations', require('./routes/location'));
 app.use('/graph', require('./routes/graph'));
+app.use('/geoloc', require('./routes/geoloc'));
 app.use('/', require('./routes/old'));
 
 app.get('/', function(req, res) {
