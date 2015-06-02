@@ -21,7 +21,7 @@ var wrap = function(text, width) {
         "y",
         function() {
           if (data.employees !== null) {
-            return u.employeeScale(data.employees) + 10;
+            return civicStore.scale.employee(data.employees) + 10;
           } else {
             return 7 + 10;
           }
@@ -45,7 +45,7 @@ var wrap = function(text, width) {
             "y",
             function() {
               if (data.employees !== null) {
-                return u.employeeScale(data.employees) + 5;
+                return civicStore.scale.employee(data.employees) + 5;
               } else {
                 return 7 + 5;
               }

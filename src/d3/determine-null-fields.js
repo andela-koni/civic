@@ -1,13 +1,13 @@
 var _ = require('lodash');
 
 var determineNullFields = function () {
-  var allNodes = _.values(window.civicStore.vertices);
+  var rawNodes = window.civicStore.vertices;
 
   var nullFieldCount = 0;
   var nullFieldArr   = [];
 
   // We know which nodes have how many null fields...
-  allNodes.forEach(
+  rawNodes.forEach(
     function(node) {
       var objValue = _.object(
         _.map(
@@ -42,7 +42,7 @@ var determineNullFields = function () {
         node.nullFields >= maxNullObj.nullFields - 7
       ) {
         var nodeObj = _.find(
-          allNodes,
+          rawNodes,
           function(e) { return node.name === e.name; }
         );
 

@@ -13,9 +13,6 @@ var colors = {
   orange: "rgb(242,80,34)"
 };
 
-var employeeScale = d3.scale.sqrt().domain([10, 130000]).range([10, 50]);
-var twitterScale  = d3.scale.sqrt().domain([10, 1000000]).range([10, 50]);
-
 var getQueryParams = function() {
   console.log("Running getQueryParams");
 
@@ -54,7 +51,7 @@ var getNameHash = function () {
     var byName = {};
 
     _.each(
-      _.values(window.civicStore.vertices),
+      window.civicStore.vertices,
       function(entity) {
         var name = entity.name.toLowerCase();
 
@@ -76,7 +73,7 @@ var getNicknameHash = function () {
     var byNickname = {};
 
     _.each(
-      _.values(window.civicStore.vertices),
+      window.civicStore.vertices,
       function(entity) {
         var nickname = entity.nickname.toLowerCase();
 
@@ -216,9 +213,7 @@ var getLowercaseList = function () {
   return window.civicStore.lists.lowercase;
 };
 
-exports.colors                   = colors
-exports.employeeScale            = employeeScale
-exports.twitterScale             = twitterScale;
+exports.colors                   = colors;
 exports.getQueryParams           = getQueryParams;
 exports.getNameHash              = getNameHash;
 exports.getNicknameHash          = getNicknameHash;

@@ -124,7 +124,7 @@ var processEdges = function(edges, withData) {
 var getAllEntities = function(callback) {
   var entities, bridges, operations;
 
-  var qry = select().from("entities_view").where({render: 1}).toString();
+  var qry = select().from("new_entities").where({render: 1}).toString();
 
   db.query(qry)
     .then(function(results) {
@@ -164,11 +164,11 @@ var getTopEntities = function(callback) {
 
   var qry = "SELECT DISTINCT * FROM (" +
     "SELECT e.* FROM (" +
-    "SELECT * FROM `entities_view` WHERE render = 1 " +
+    "SELECT * FROM `new_entities` WHERE render = 1 " +
     "ORDER BY employees DESC LIMIT 10) e " +
     "UNION " +
     "SELECT f.* FROM (" +
-    "SELECT * FROM `entities_view` WHERE render = 1 " +
+    "SELECT * FROM `new_entities` WHERE render = 1 " +
     "ORDER BY followers DESC LIMIT 10) f " +
     ") t ORDER BY t.name";
 
@@ -209,7 +209,7 @@ var getOtherEntities = function(idsToAvoid, callback) {
   var entities, bridges, operations;
 
   var qry = "SELECT id, name, nickname, followers, employees, entity_type " +
-    "FROM entities_view " +
+    "FROM new_entities " +
     "WHERE id NOT IN (" + idsToAvoid.join(",") + ")";
 
   db.query(qry)
@@ -248,11 +248,11 @@ var getOtherEntities = function(idsToAvoid, callback) {
 var getVertices = function(callback) {
   var qry = "SELECT DISTINCT * FROM (" +
     "SELECT e.* FROM (" +
-    "SELECT * FROM `entities_view` WHERE render = 1 " +
+    "SELECT * FROM `new_entities` WHERE render = 1 " +
     "ORDER BY employees DESC LIMIT 10) e " +
     "UNION " +
     "SELECT f.* FROM (" +
-    "SELECT * FROM `entities_view` WHERE render = 1 " +
+    "SELECT * FROM `new_entities` WHERE render = 1 " +
     "ORDER BY followers DESC LIMIT 10) f " +
     ") t ORDER BY t.name";
 
@@ -268,7 +268,7 @@ var getVertices = function(callback) {
       });
 
       qry = "SELECT id, name, nickname, followers, employees, entity_type " +
-          "FROM entities_view " +
+          "FROM new_entities " +
           "WHERE id NOT IN (" + idsToAvoid.join(",") + ")";
 
       return db.query(qry)
@@ -484,15 +484,10 @@ var getStore = function(callback) {
   getAllEntities(function(err, vertices) {
     var entityHash = {};
     var ids = [];
-    // var search = {};
 
     _.each(vertices.vertices, function(vertex) {
       entityHash[vertex.id] = vertex;
       ids.push(vertex.id);
-      // search[vertex.name] = search[vertex.name] || {}
-      // search[vertex.name][vertex.id] = true;
-      // search[vertex.nickname] = search[vertex.nickname] || {};
-      // search[vertex.nickname][vertex.id] = true;
     })
 
     getSpecifiedEdges(ids, function(err, edges) {
@@ -522,7 +517,7 @@ var getStore = function(callback) {
           })
 
           var out = {
-            vertices: entityHash,
+            vertices: _.values(entityHash),
             edges: edges.edges,
             locations: locations.locations,
             cities: cities.cities

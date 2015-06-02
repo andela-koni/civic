@@ -1,13 +1,14 @@
 var d3 = require('d3');
 var _  = require('lodash');
 
+// VERIFIED
 var dblClick = function (d) {
-  var vertices = _.values(civicStore.vertices);
-  var edges    = _.chain(civicStore.edges).values().flatten().value();
-  var width    = civicStore.dimensions.width;
-  var height   = civicStore.dimensions.height;
-  var eScale   = civicStore.scale.employee;
-  var tScale   = civicStore.scale.twitter;
+  var rawNodes       = civicStore.vertices;
+  var rawConnections = civicStore.edges.all;
+  var width          = civicStore.dimensions.width;
+  var height         = civicStore.dimensions.height;
+  var eScale         = civicStore.scale.employee;
+  var tScale         = civicStore.scale.twitter;
 
   d3
     .select(this)
@@ -40,26 +41,25 @@ var dblClick = function (d) {
   var scaledDX = multiplierX * d.x;
   var scaledDY = multiplierY * d.y;
 
-  civicStore.nodes.centered = _.cloneDeep(d);
+  var centeredNode = civicStore.nodes.centered = $.extend(true, {}, d);
 
   // Half viewbox...
-  civicStore.nodes.centered.x = width / 2 - 10;
-  civicStore.nodes.centered.y = height / 2 - 60;
+  centeredNode.x = width / 2 - 10;
+  centeredNode.y = height / 2 - 60;
 
   var force = d3.layout
     .force()
-    .nodes(vertices)
+    .nodes(rawNodes)
     .size([width, height])
-    .links(edges)
+    .links(rawConnections)
     .linkStrength(0)
     .charge(function(d) {
-      if (d.render === 1) {
-        if (d.employees !== null)
-          return -6 * eScale(d.employees);
-        else
-          return -25;
-      } else
+      if (d.render) {
+        if (d.employees) { return -6 * eScale(d.employees); }
+        else { return -25; }
+      } else {
         return 0;
+      }
     })
     .linkDistance(50)
     .on("tick", require('./tick'))

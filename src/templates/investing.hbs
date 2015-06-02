@@ -1,13 +1,14 @@
-<!-- investing.hbs -->
-<div id="#investing-{{idx}}">
-  <div data-role="input-control" class="invest-input input-control text">
-    <input type="text" name="invest" placeholder="Investor" style="display:inline-block; width:50%;"
-      list="investment-received-list" class="investor"/>
+<div id="investing-{{zero @index}}">
+  <div class="invest-input input-control text" data-role="input-control">
+    <input class="investor" list="investment-received-list" name="invest"
+      placeholder="Investor" style="display:inline-block; width:50%;"
+      type="text" value="{{entity}}" />
     <datalist id="investment-received-list"></datalist>
-    <input type="text" name="invest_amt" placeholder="Amount" style="display:inline-block; width: 27%;"
-      class="invest_amt"/>
-    <input type="text" name="invest_year" placeholder="Year" style="display:inline-block; width: 20%;"
-      class="invest_year"/>
+    <input class="invest_amt" name="invest_amt"
+      placeholder="Amount" style="display:inline-block; width: 27%;"
+      type="text" value="{{amount}}" />
+    <input class="invest_year" name="invest_year"
+      placeholder="Year" style="display:inline-block; width: 20%;"
+      type="text" value="{{year}}" />
   </div>
 </div>
-<!-- end investing.hbs -->

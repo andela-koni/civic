@@ -1,12 +1,12 @@
 
 var searchAutoComplete = function () {
-  // var allNodes = _.values(window.civicStore.vertices);
+  // var rawNodes = window.civicStore.vertices;
 
   var s = ""; /////
 
   var entitiesHash = {};
 
-  // allNodes.forEach(
+  // rawNodes.forEach(
   //   function(entity) {
   //     var name = entity.name.toLowerCase();
   //     var nickname = entity.nickname.toLowerCase();

@@ -20,9 +20,6 @@ var u = require('../utilities');
 var formATmpl = require("../templates/form-a.hbs");
 
 var editForm = function() {
-  d3.select('#edit-add-info')
-    .html('<i class=" icon-file on-left"></i>Reset Form')
-    .on('click', editForm);
 
   window.node.on('mouseover', null);
 

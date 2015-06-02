@@ -1,6 +1,5 @@
-<!-- data.hbs -->
-<div id="data-{{idx}}" data-role="input-control" class="input-control text">
-  <input type="text" name="data" placeholder="Data Resource" list="data-received-list" class="data-entity"/>
+<div class="input-control text" data-role="input-control" id="data-{{zero @index}}">
+  <input class="data-entity" list="data-received-list" name="data"
+    placeholder="Data Resource" type="text" value="{{entity}}" />
   <datalist id="data-received-list"></datalist>
 </div>
-<!-- end data.hbs -->

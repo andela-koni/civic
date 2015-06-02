@@ -5,7 +5,7 @@ var tick = function (event) {
   var k = 8 * event.alpha;
 
   /* Four quandrant separation */
-  _.values(window.civicStore.vertices).forEach(
+  window.civicStore.vertices.forEach(
     function(entity, idx) {
       if (entity.entity_type !== null) {
         if (entity.entity_type === "Individual") {

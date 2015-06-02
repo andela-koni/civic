@@ -4,11 +4,12 @@ var _  = require('lodash');
 var drawVertices = require('./draw-vertices');
 
 var drawGraph = function (root) {
-  var vertices = _.values(window.civicStore.vertices)
+  console.log("In drawGraph");
+  var rawNodes = window.civicStore.vertices;
 
-  console.log("vertices", vertices);
+  console.log("rawNodes", rawNodes);
 
-  drawVertices(vertices);
+  drawVertices(rawNodes);
 };
 
 module.exports = drawGraph;

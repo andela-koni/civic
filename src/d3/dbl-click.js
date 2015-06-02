@@ -36,12 +36,12 @@ var dblClick = function(d) {
   window.centeredNode.y = window.height / 2 - 60;
 
   var force = d3.layout.force()
-    .nodes(_.values(window.civicStore.vertices))
+    .nodes(window.civicStore.vertices))
     .size([window.width, window.height])
     .links(window.connections)
     .linkStrength(0)
     .charge(function(d) {
-      return d.employees !== null ? -6 * u.employeeScale(d.employees) : -25;
+      return d.employees !== null ? -6 * civicStore.scale.employee(d.employees) : -25;
     })
     .linkDistance(50)
     .on("tick", tick)

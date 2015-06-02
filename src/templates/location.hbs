@@ -1,8 +1,19 @@
-<!-- location.hbs -->
-<div id="#location-{{idx}}" data-role="input-control" class="input-control text">
-  <input id="location" type="text" name="location" placeholder="City" list="list-location"
-    style="width:50%;" class="locations"/>
-  <input id="state" type="text" placeholder="State" style="width:22%;"/>
-  <input id="country" type="text" placeholder="Country" style="width:28%;"/>
+<div id="location-{{zero @index}}">
+  <div class="input-control text" data-role="input-control">
+    <input class="locations" id="street--{{zero @index}}"
+      name="street" placeholder="Street address"
+      style="width:100%"
+      type="text" value="{{street}}" />
+    <input class="locations" id="city-{{zero @index}}" list="list-city"
+      name="city" placeholder="City"
+      style="width:50%;"
+      type="text" value="{{city}}" />
+    <datalist id="list-city"></datalist>
+    <input id="state-{{zero @index}}" placeholder="State"
+      style="width:22%;"
+      type="text" value="{{state}}" />
+    <input id="country-{{zero @index}}" placeholder="Country"
+      style="width:28%;"
+      type="text" value="{{country}}" />
+  </div>
 </div>
-<!-- end location.hbs -->

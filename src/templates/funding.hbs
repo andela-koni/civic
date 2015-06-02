@@ -1,13 +1,14 @@
-<!-- funding.hbs -->
-<div id="#funding-{{idx}}">
-  <div data-role="input-control" class="fund-input input-control text">
-    <input type="text" name="fund" placeholder="Funder" style="display:inline-block; width:50%;"
-      list="funding-received-list" class="funder"/>
+<div id="funding-{{zero @index}}">
+  <div class="fund-input input-control text" data-role="input-control">
+    <input class="funder" list="funding-received-list" name="fund"
+      placeholder="Funder" style="display:inline-block; width:50%;"
+      type="text" value="{{entity}}" />
     <datalist id="funding-received-list"></datalist>
-    <input type="text" name="fund_amt" placeholder="Amount" style="display:inline-block; width: 27%;"
-      class="fund_amt"/>
-    <input type="text" name="fund_year" placeholder="Year" style="display:inline-block; width: 20%;"
-      class="fund_year"/>
+    <input class="fund_amt" name="fund_amt"
+      placeholder="Amount" style="display:inline-block; width: 27%;"
+      type="text" value="{{amount}}" />
+    <input class="fund_year" name="fund_year"
+      placeholder="Year" style="display:inline-block; width: 20%;"
+      type="text" value="{{year}}" />
   </div>
 </div>
-<!-- end funding.hbs -->

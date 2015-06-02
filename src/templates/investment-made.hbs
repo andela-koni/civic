@@ -1,13 +1,14 @@
-<!-- investment-made.hbs -->
-<div id="#investmentmade-{{idx}}">
-  <div data-role="input-control" class="investmade-input input-control text">
-    <input type="text" name="investmade" placeholder="Investee" style="display:inline-block; width:50%;"
-      list="investment-made-list" class="investee"/>
+<div id="investmentmade-{{zero @index}}">
+  <div class="investmade-input input-control text" data-role="input-control">
+    <input class="investee" list="investment-made-list" name="investmade"
+      placeholder="Investee" style="display:inline-block; width:50%;"
+      type="text" value="{{entity}}" />
     <datalist id="investment-made-list"></datalist>
-    <input type="text" name="investmade_amt" placeholder="Amount" style="display:inline-block; width: 27%;"
-      class="investmade_amt"/>
-    <input type="text" name="investmade_year" placeholder="Year" style="display:inline-block; width: 20%;"
-      class="investmade_year"/>
+    <input class="investmade_amt" name="investmade_amt"
+      placeholder="Amount" style="display:inline-block; width: 27%;"
+      type="text" value="{{amount}}" />
+    <input class="investmade_year" name="investmade_year"
+      placeholder="Year" style="display:inline-block; width: 20%;"
+      type="text" value="{{year}}" />
   </div>
 </div>
-<!-- end investment-made.hbs -->

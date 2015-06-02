@@ -3,20 +3,21 @@ var d3 = require('d3');
 var u = require('../utilities');
 
 var drawVertices = function (vertices) {
-  var network = d3.select('#network');
-  var width   = network.attr('width');
-  var height  = network.attr('height');
+  console.log("In drawVertices");
+  var n = d3.select('#network');
+  var w   = network.attr('width');
+  var h  = network.attr('height');
 
   var force = d3
     .layout
     .force()
-    .nodes(vertices)
-    .size([width, height])
+    .nodes(window.vertices)
+    .size([w, h])
     .links(window.connections)
     .linkStrength(0)
     .charge(function(vertex) {
       if (vertex.employees) {
-        return -6 * u.employeeScale(vertex.employees);
+        return -6 * civicStore.scale.employee(vertex.employees);
       } else {
         return -25;
       }

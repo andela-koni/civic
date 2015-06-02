@@ -78,7 +78,7 @@ var drawGraph = function () {
     .attr("viewBox", viewBoxParameters)
     .attr("preserveAspectRatio", 'xMidYMid');
 
-  var allNodes = _.values(window.civicStore.vertices);
+  var rawNodes = window.civicStore.vertices;
 
   window.connections =
     [].concat(window.civicStore.edges.funding)
@@ -89,12 +89,12 @@ var drawGraph = function () {
   var force = d3
     .layout
     .force()
-    .nodes(allNodes)
+    .nodes(rawNodes)
     .size([window.width, window.height])
     .links(window.connections)
     .linkStrength(0)
     .charge(function(d) {
-      return d.employees !== null ? -6 * u.employeeScale(d.employees) : -25;
+      return d.employees !== null ? -6 * civicStore.scale.employee(d.employees) : -25;
     })
     .linkDistance(50);
 
@@ -150,7 +150,7 @@ var drawGraph = function () {
 
   window.nodeInit = window.svg
     .selectAll(".node")
-    .data(allNodes)
+    .data(rawNodes)
     .enter()
     .append("g")
     .attr("class", "node")
@@ -167,7 +167,7 @@ var drawGraph = function () {
     .attr("y",
       function(d) {
         if (d.employees !== null) {
-          return u.employeeScale(d.employees) + 10;
+          return civicStore.scale.employee(d.employees) + 10;
         } else {
           return 7 + 10;
         }
@@ -208,7 +208,7 @@ var drawGraph = function () {
       function(d) {
         if (d.employees !== null) {
 
-          return u.employeeScale(d.employees);
+          return civicStore.scale.employee(d.employees);
         } else {
           return "7";
         }
@@ -402,7 +402,7 @@ var drawGraph = function () {
             "r",
             function(d) {
               if (d.employees !== null) {
-                return u.employeeScale(d.employees);
+                return civicStore.scale.employee(d.employees);
               } else {
                 return "7";
               }
@@ -414,7 +414,7 @@ var drawGraph = function () {
             'transform',
             function(d) {
               if (d.employees !== null) {
-                return translation(0, -(u.employeeScale(d.employees)));
+                return translation(0, -(civicStore.scale.employee(d.employees)));
               } else {
                 return translation(0, -7);
               }
@@ -434,7 +434,7 @@ var drawGraph = function () {
                 if (d.followers > 1000000) {
                   return "50";
                 } else {
-                  return u.twitterScale(d.followers);
+                  return civicStore.scale.twitter(d.followers);
                 }
               } else {
                 return "7";
@@ -447,7 +447,7 @@ var drawGraph = function () {
             'transform',
             function(d) {
               if (d.followers !== null) {
-                return translation(0, -(u.twitterScale(d.followers)));
+                return translation(0, -(civicStore.scale.twitter(d.followers)));
               } else {
                 return translation(0, -7);
               }
@@ -483,7 +483,7 @@ var drawGraph = function () {
           var force = d3
             .layout
             .force()
-            .nodes(allNodes)
+            .nodes(rawNodes)
             .size([window.width, window.height])
             .links(window.connections)
             .linkStrength(0)
@@ -491,7 +491,7 @@ var drawGraph = function () {
               function(d) {
                 if (d.render === 1) {
                   if (d.employees !== null)
-                    return -6 * u.employeeScale(d.employees);
+                    return -6 * civicStore.scale.employee(d.employees);
                   else {
                     return -25;
                   }

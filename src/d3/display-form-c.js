@@ -8,7 +8,7 @@ var sinclick            = require('./sinclick');
 var formCTmpl = require('../templates/form-c.hbs');
 
 var displayFormC = function () {
-  var suggestions = determineNullFields(_.values(window.civicStore.vertices));
+  var suggestions = determineNullFields(window.civicStore.vertices);
 
   // Render the string into HTML
   d3.select('#info').html(formCTmpl({ suggestions: suggestions }));

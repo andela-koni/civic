@@ -4,11 +4,11 @@ var preFillFormA = require('./pre-fill-form-a');
 var preParseForm = function (input) {
   input = input.toLowerCase();
 
-  var entitiesHash = {};
+  var entitiesHash = civicStore.nodes.byType;
 
   if (input in entitiesHash) {
     editForm();
-    preFillFormA(entitiesHash[input]); // TODO
+    preFillFormA(entitiesHash[input]);
   }
 }
 

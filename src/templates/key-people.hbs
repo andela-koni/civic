@@ -1,5 +1,5 @@
-<!-- key-people.hbs -->
-<div id="#key-people-{{idx}}" data-role="input-control" class="input-control text">
-  <input type="text" name="kpeople" placeholder="Key Person's Name" class="kpeople"/>
+<div class="input-control text" data-role="input-control"
+    id="key-people-{{zero @index}}">
+  <input class="kpeople" name="kpeople" placeholder="Key Person's Name"
+    type="text" value="{{this}}" />
 </div>
-<!-- end key-people.hbs -->

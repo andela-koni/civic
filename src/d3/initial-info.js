@@ -3,7 +3,7 @@ var $ = require('jquery');
 var entityNamesTmpl = require('../templates/entity-names.hbs');
 
 var initialInfo = function () {
-  var allNodes = _.values(window.civicStore.vertices);
+  var rawNodes = window.civicStore.vertices;
 
   var countTypes = [0, 0, 0, 0];
 
@@ -12,28 +12,28 @@ var initialInfo = function () {
   var individualArray = [];
   var governmentArray = [];
 
-  for (var x = 0; x < allNodes.length; x++) {
-    if (allNodes[x].entity_type === "For-Profit") {
-      forProfitsArray.push(allNodes[x].name);
-      window.forProfitObjects.push(allNodes[x]);
+  for (var x = 0; x < rawNodes.length; x++) {
+    if (rawNodes[x].entity_type === "For-Profit") {
+      forProfitsArray.push(rawNodes[x].name);
+      window.forProfitObjects.push(rawNodes[x]);
       countTypes[0]++;
     }
 
-    if (allNodes[x].entity_type === "Non-Profit") {
-      nonProfitsArray.push(allNodes[x].name);
-      window.nonProfitObjects.push(allNodes[x]);
+    if (rawNodes[x].entity_type === "Non-Profit") {
+      nonProfitsArray.push(rawNodes[x].name);
+      window.nonProfitObjects.push(rawNodes[x]);
       countTypes[1]++;
     }
 
-    if (allNodes[x].entity_type === "Individual") {
-      individualArray.push(allNodes[x].name);
-      window.individualObjects.push(allNodes[x]);
+    if (rawNodes[x].entity_type === "Individual") {
+      individualArray.push(rawNodes[x].name);
+      window.individualObjects.push(rawNodes[x]);
       countTypes[3]++;
     }
 
-    if (allNodes[x].entity_type === "Government") {
-      governmentArray.push(allNodes[x].name);
-      window.governmentObjects.push(allNodes[x]);
+    if (rawNodes[x].entity_type === "Government") {
+      governmentArray.push(rawNodes[x].name);
+      window.governmentObjects.push(rawNodes[x]);
       countTypes[2]++;
     }
   }
